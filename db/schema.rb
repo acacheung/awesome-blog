@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20130519163213) do
     t.string   "last_name"
     t.boolean  "is_author",  :default => false
     t.string   "email"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
