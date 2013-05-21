@@ -1,3 +1,5 @@
 class Category < ActiveRecord::Base
-  # attr_accessible :blog_id, :category
+  attr_accessible :category
+
+  has_many :blogs
 end

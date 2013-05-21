@@ -1,6 +1,10 @@
 class Blog < ActiveRecord::Base
-  # attr_accessible :author_id, :title, :body
+  attr_accessible :title, :body, :category_id, :author_id
 
-  # validates :title, :presence => true
-  # validates :body, :presence => true
+  validates :title, :presence => true
+  validates :body, :presence => true
+
+  belongs_to :user
+  has_many :category
+  has_many :comments
 end

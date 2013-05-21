@@ -1,5 +1,9 @@
 class Comment < ActiveRecord::Base
-  # attr_accessible :user_id, :body
+  attr_accessible :blog_id, :user_id, :body
 
-  # validates :body, :presence => true
+  validates :blog_id, :presence => true
+  validates :body, :presence => true
+
+  belongs_to :blog
+  belongs_to :user
 end
