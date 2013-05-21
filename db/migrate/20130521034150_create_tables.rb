@@ -1,4 +1,4 @@
-class CreateUserTable < ActiveRecord::Migration
+class CreateTables < ActiveRecord::Migration
   def up
     create_table :users do |t|
       t.string :first_name, :default => "Anonymous"
@@ -10,14 +10,16 @@ class CreateUserTable < ActiveRecord::Migration
     end
 
     create_table :blogs do |t|
-      t.integer :author_id
       t.string :title, :null => false
       t.text :body, :null => false
+      t.integer :category_id
+      t.integer :author_id
 
       t.timestamps
     end
 
     create_table :comments do |t|
+      t.integer :blog_id, :null => false
       t.integer :user_id
       t.text :body, :null => false
 
@@ -25,7 +27,6 @@ class CreateUserTable < ActiveRecord::Migration
     end
 
     create_table :categories do |t|
-      t.integer :blog_id
       t.string :category
     end
   end

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :user_id, :body
+  # attr_accessible :user_id, :body
 
-  validates :body, :presence => true
+  # validates :body, :presence => true
 end
