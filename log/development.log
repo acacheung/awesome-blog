@@ -266,3 +266,25 @@ Migrating to CreateTables (20130521034150)
   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130521034150')
   [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+SQLite3::SQLException: no such column: blogs.user_id: SELECT "blogs".* FROM "blogs"  WHERE "blogs"."user_id" = 2
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTables (20130521034150)
+Migrating to UpdateAuthorid (20130521043105)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TEMPORARY TABLE "altered_blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) NOT NULL, "body" text NOT NULL, "category_id" integer, "author_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "blogs"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "altered_blogs" ("id","title","body","category_id","author_id","created_at","updated_at") VALUES (1, 'Awesome Typography', 'With great typography comes great powers', NULL, 2, '2013-05-21 04:28:48.314523', '2013-05-21 04:28:48.314523')
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "blogs"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255) NOT NULL, "body" text NOT NULL, "category_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "altered_blogs"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "blogs" ("id","title","body","category_id","created_at","updated_at") VALUES (1, 'Awesome Typography', 'With great typography comes great powers', NULL, '2013-05-21 04:28:48.314523', '2013-05-21 04:28:48.314523')
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_blogs"[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "blogs" ADD "user_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130521043105')[0m
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
